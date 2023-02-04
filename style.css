@@ -1,3 +1,6 @@
+body{
+  padding-top: 8em;
+}
 .img-size{
     /* 	padding: 0;
         margin: 0; */
@@ -27,3 +30,49 @@
     .store-item-quantity-input{
         width: 70px;
     }
+    .cart {
+        position: relative;
+        color: rgba(0, 0, 0, 0.55);
+        font-size: 26px;
+        padding-right: 5px;
+      }
+      .cart-amount {
+        position: absolute;
+        height: 16px;
+        width: 16px;
+        font-size: 14px;
+      }
+      .bg-pastel-green{
+        background-color: #bae8d4;
+      }
+      .bg-pastel-purple{
+        background-color: #CDB4DB;
+      }
+      .bg-pastel-light-pink{
+        background-color: #FFC8DD;
+      }
+      .bg-pastel-pink{
+        background-color: #FFAFCC;
+      }
+      .bg-pastel-blue{
+        background-color: #A2D2FF;
+      }
+      .bg-pastel-turquoise{
+        background-color: #BDE0FE;
+      }
+      .bg-pastel-red{
+        background-color: #ef4035;
+      }
+      .font{
+        font-family: "Gatefold Demi",serif;
+      }
+      .bg-pastel-purple2{
+        background-color: #e7cbef;
+      }
+    }
+    .bg-pastel-red{
+      background-color: #d39c7d;
+    }
+      .flex-even {
+        flex: 1;
+      }

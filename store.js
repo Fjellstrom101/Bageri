@@ -1,5 +1,12 @@
 let cart = JSON.parse(localStorage.getItem("cart-items")) || [];
 
+document.addEventListener("visibilitychange", function (ev) {
+  if (document.visibilityState === "visible" && document.body.id === "cart") {
+    generateCart();
+    console.log("Laddar");
+  }
+});
+
 if (document.readyState == "loading") {
   document.addEventListener("DOMContentLoaded", ready);
 } else {
@@ -20,139 +27,98 @@ function ready() {
 }
 
 function generateStore() {
-  let store = document.getElementsByClassName("store-items")[0];
-  let modals = document.getElementsByClassName("modals-container")[0];
+  let store = document.querySelector(".store-items");
+  removeAllChildNodes(store);
+  let modals = document.querySelector(".modals-container");
 
-  let generatedHTML = "";
+  const storeItemTemplate = document.querySelector(
+    "template#store-item-template"
+  );
+  const modalTemplate = document.querySelector(
+    "template#store-item-modal-template"
+  );
+
   let generatedModals = "";
 
   for (const category of storeItems) {
     for (const item of category.items) {
-      generatedHTML += `<div class="col">
-      <div class="card border-0">
-        <img class="card-img-top rounded-4" width="100%"  aria-label="Product Image" src="${item.thumbnail}" alt="Card image cap">
-        <div class="card-body">
-          <h6 class="card-title">${item.name}</h6>
-          <p class="card-text">${item.desc}</p>
-          <div class="d-flex justify-content-end align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modal-${item.id}">Mer info</button>
-              <button type="button" class="btn btn-primary btn-sm ">Lägg i varukorg</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>`;
+      const storeItem = storeItemTemplate.content.cloneNode(true);
+      const storeItemModal = modalTemplate.content.cloneNode(true);
+      //Store
+      storeItem.querySelector(".store-item-title").innerText = item.name;
+      storeItem.querySelector(".store-item-desc").innerText = item.desc;
+      storeItem.querySelector(".store-item-image").src = item.thumbnail;
+      storeItem
+        .querySelector(".store-item-modal-button")
+        .setAttribute("data-bs-target", `#modal-${item.id}`);
 
-      generatedModals += `<div
-      class="modal fade"
-      id="modal-${item.id}"
-      tabindex="-1"
-      aria-labelledby="modal-${item.id}-label"
-      aria-hidden="true"
-    >
-      <div
-        class="modal-dialog modal-dialog-centered modal-fullscreen-md-down modal-lg"
-      >
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5>${item.name}</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div id="item-${item.id}-carousel" class="carousel slide rounded-top">
-              <div class="carousel-indicators">
-              <button
-                  type="button"
-                  data-bs-target="#item-${item.id}-carouselIndicators"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
-                ></button>`;
+      store.append(storeItem);
 
-      for (let i = 1; i < item.images.length; i++) {
-        generatedModals += `<button
-                type="button"
-                data-bs-target="#item-${item.id}-carouselIndicators"
-                data-bs-slide-to="${i}"
-                aria-label="Slide ${i + 1}"
-              ></button>`;
+      //Modal
+      storeItemModal.querySelector(".store-item-modal").id = `modal-${item.id}`;
+      storeItemModal
+        .querySelector(".store-item-modal")
+        .setAttribute("aria-labelledby", `modal-${item.id}-label`);
+      storeItemModal.querySelector(
+        ".store-item-title"
+      ).id = `modal-${item.id}-label`;
+
+      storeItemModal.querySelector(".store-item-title").innerText = item.name;
+      storeItemModal.querySelector(".store-item-desc").innerText = item.desc;
+      storeItemModal.querySelector(".store-item-ingredients").innerText =
+        item.ingredients;
+
+      storeItemModal
+        .querySelector(".store-item-quantity-input")
+        .classList.add(`quantity-input-${item.id}`);
+      storeItemModal.querySelector(".shop-item-add-to-cart").onclick = () => {
+        addItemToCart(item.id);
+      };
+
+      const imageCarousel = storeItemModal.querySelector(".carousel");
+      imageCarousel.id = `item-${item.id}-carousel`;
+      imageCarousel
+        .querySelector(".carousel-control-prev")
+        .setAttribute("data-bs-target", `#item-${item.id}-carousel`);
+
+      imageCarousel
+        .querySelector(".carousel-control-next")
+        .setAttribute("data-bs-target", `#item-${item.id}-carousel`);
+
+      for (let i = 0; i < item.images.length; i++) {
+        const carouselIndicator = document.createElement("button");
+        carouselIndicator.setAttribute("type", "button");
+        carouselIndicator.setAttribute(
+          "data-bs-target",
+          `#item-${item.id}-carouselIndicators`
+        );
+        carouselIndicator.setAttribute("data-bs-slide-to", `${i}`);
+        carouselIndicator.setAttribute("aria-label", `Slide ${i + 1}`);
+
+        const carouselImageDiv = document.createElement("div");
+        carouselImageDiv.classList.add("carousel-item");
+        const carouselImageImg = document.createElement("img");
+        carouselImageDiv.append(carouselImageImg);
+
+        carouselImageImg.setAttribute("src", item.images[i].image);
+        carouselImageImg.classList.add("d-block", "w-100");
+
+        if (i == 0) {
+          carouselIndicator.setAttribute("class", "active");
+          carouselIndicator.setAttribute("aria-current", "true");
+
+          carouselImageDiv.classList.add("active");
+        }
+
+        imageCarousel
+          .querySelector(".carousel-indicators")
+          .append(carouselIndicator);
+
+        imageCarousel.querySelector(".carousel-inner").append(carouselImageDiv);
       }
-
-      generatedModals += `</div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="${item.images[0].image}" class="d-block w-100" alt="" />
-                </div>
-                `;
-
-      for (let i = 1; i < item.images.length; i++) {
-        generatedModals += `<div class="carousel-item">
-        <img src="${item.images[i].image}" class="d-block w-100" alt="" />
-      </div>`;
-      }
-      generatedModals += `
-              </div>
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#item-${item.id}-carousel"
-                data-bs-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#item-${item.id}-carousel"
-                data-bs-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-            <h5 class="m-3">Beskrivning:</h5>
-            <p class="m-3 mt-0">
-            ${item.desc}
-            </p>
-            <h5 class="m-3">Ingredienser:</h5>
-            <p class="m-3 mt-0">
-            ${item.ingredients}
-            </p>
-          </div>
-
-          <div class="modal-footer">
-            <input
-              type="number"
-              class="form-control text-center store-item-quantity-input quantity-input-${item.id} border-1"
-              value="1"
-              aria-label="Item amount"
-            />
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick="addItemToCart(${item.id})">
-              Lägg till i varukorg
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>`;
+      modals.append(storeItemModal);
     }
   }
-
-  store.innerHTML = generatedHTML;
-  modals.innerHTML = generatedModals;
 }
 function addStoreListeners() {
   let addToCartButtons = document.getElementsByClassName("shop-item-button");
@@ -170,76 +136,44 @@ function addStoreListeners() {
   }
 }
 function generateCart() {
-  let cartElement = document.getElementsByClassName("shopping-cart-items")[0];
-  let generatedCart = "<div></div>";
+  loadCart();
+
+  const cartElement = document.querySelector(".shopping-cart-items");
+  removeAllChildNodes(cartElement);
+
+  const template = document.querySelector("template#cart-item-template");
+
   if (cart.length !== 0) {
     for (const cartItem of cart) {
-      let item =
-        storeItems
-          .find((c) =>
-            c.items.some((i) => {
-              return i.id === cartItem.id;
-            })
-          )
-          .items.find((i) => i.id === cartItem.id) || [];
+      const itemElement = template.content.cloneNode(true);
+      let itemInfo = getStoreItem(cartItem.id);
 
-      generatedCart += `<tr class="shopping-cart-item">
-      <td data-th="Product">
-        <div class="row">
-          <div class="col-md-3 text-start">
-            <img
-              src="${item.thumbnail}"
-              alt=""
-              class="img-fluid d-none d-md-block rounded mb-2 shadow"
-            />
-          </div>
-          <div class="col-md-9 text-start mt-sm-2">
-            <h4>${item.name}</h4>
-            <p class="font-weight-light">Brand &amp; Name</p>
-          </div>
-        </div>
-      </td>
-      <td data-th="Price" class="cart-item-price">${item.price}</td>
-      <td data-th="Quantity">
-        <input
-          type="number"
-          class="form-control form-control-lg text-center cart-item-quantity-input"
-          value="${cartItem.amount}"
-          aria-label="Item amount"
-        />
-      </td>
-      <td class="actions" data-th="">
-        <div class="text-end">
-          <button
-            class="btn btn-white border-secondary bg-white btn-md mb-2"
-            aria-label="Update cart item"
-          >
-            <i class="fas fa-sync"></i>
-          </button>
-          <button
-            class="btn btn-white border-secondary bg-white btn-md mb-2 delete-cart-item"
-            aria-label="Delete cart item"
-          >
-            <i class="fas fa-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>`;
+      itemElement.querySelector("tr").id = `cart-item-${cartItem.id}`;
+      itemElement.querySelector(".cart-item-image").src = itemInfo.thumbnail;
+      itemElement.querySelector(".cart-item-title").innerText = itemInfo.name;
+      itemElement.querySelector(".cart-item-price").innerText = itemInfo.price;
+      itemElement.querySelector(".cart-item-quantity-input").value =
+        cartItem.amount;
+      itemElement.querySelector(".delete-cart-item").onclick = () => {
+        removeCartItem(cartItem.id);
+      };
+
+      cartElement.append(itemElement);
     }
   } else {
-    generatedCart = "<tr><td>Din kundvagn är tom!<td></tr>";
+    cartElement.innerHTML = "<tr><td>Din kundvagn är tom!<td></tr>"; //TODO
   }
-  cartElement.innerHTML = generatedCart;
+
   updateCartTotal();
 }
 
 function addCartListeners() {
-  let removeCartItemButtons =
-    document.getElementsByClassName("delete-cart-item");
-  for (let i = 0; i < removeCartItemButtons.length; i++) {
-    let button = removeCartItemButtons[i];
-    button.addEventListener("click", removeCartItem);
-  }
+  // let removeCartItemButtons =
+  //   document.getElementsByClassName("delete-cart-item");
+  // for (let i = 0; i < removeCartItemButtons.length; i++) {
+  //   let button = removeCartItemButtons[i];
+  //   button.addEventListener("click", removeCartItem);
+  // }
 
   let quantityInputs = document.getElementsByClassName(
     "cart-item-quantity-input"
@@ -265,10 +199,13 @@ function checkoutClicked() {
   updateCartTotal();
 }
 
-function removeCartItem(event) {
-  let buttonClicked = event.target;
-  buttonClicked.closest("tr").remove();
+function removeCartItem(id) {
+  const itemElement = document.querySelector(`tr#cart-item-${id}`);
+  itemElement.remove();
 
+  cart = cart.filter((item) => item.id !== id);
+
+  saveCart();
   updateCartTotal();
 }
 
@@ -277,24 +214,15 @@ function quantityChanged(event) {
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
-  updateCartTotal();
-}
-
-function addToCartClicked(event) {
-  let button = event.target;
-  let shopItem = button.parentElement.parentElement;
-  let title = shopItem.getElementsByClassName("shop-item-title")[0].innerText;
-  let price = shopItem.getElementsByClassName("shop-item-price")[0].innerText;
-  let imageSrc = shopItem.getElementsByClassName("shop-item-image")[0].src;
-  addItemToCart(title, price, imageSrc);
-  updateCartTotal();
+  if (document.body.id === "cart") {
+    updateCartTotal();
+  }
 }
 
 function addItemToCart(id) {
+  loadCart();
   let search = cart.find((x) => x.id === id);
-  let amount = parseInt(
-    document.getElementsByClassName(`quantity-input-${id}`)[0].value
-  );
+  let amount = parseInt(document.querySelector(`.quantity-input-${id}`).value);
 
   if (search === undefined) {
     cart.push({
@@ -305,8 +233,8 @@ function addItemToCart(id) {
     search.amount += amount;
   }
 
-  document.getElementsByClassName(`quantity-input-${id}`)[0].value = 1;
-  localStorage.setItem("cart-items", JSON.stringify(cart));
+  document.querySelector(`.quantity-input-${id}`).value = 1;
+  saveCart();
 }
 
 function updateCartTotal() {
@@ -333,5 +261,27 @@ function updateTotalCartItems() {
   let total = 0;
   for (const cartItem of cart) {
     total += cartItem.amount;
+  }
+}
+function getStoreItem(id) {
+  return (
+    storeItems
+      .find((c) =>
+        c.items.some((i) => {
+          return i.id === id;
+        })
+      )
+      .items.find((i) => i.id === id) || []
+  );
+}
+function saveCart() {
+  localStorage.setItem("cart-items", JSON.stringify(cart));
+}
+function loadCart() {
+  cart = JSON.parse(localStorage.getItem("cart-items")) || [];
+}
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
   }
 }

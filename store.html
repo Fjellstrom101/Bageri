@@ -8,7 +8,14 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
+    <meta
+      name="description"
+      content="All about meta tags and how to add them to your website."
+    />
+    <meta
+      name="keywords"
+      content="meta tags, meta description, meta keywords, SEO, search engine optimization"
+    />
     <!-- Bootstrap CSS v5.2.1 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
@@ -16,542 +23,208 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="storeitems.js"></script>
     <script src="store.js" async></script>
+    <link rel="preload" href="./images/1-1.webp" as="image" />
   </head>
 
   <body id="store">
-    <header
-      class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
-    >
-      <a
-        href="/"
-        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+    <header>
+      <nav
+        class="navbar d-flex fixed-top navbar-expand-md bg-white flex-wrap justify-content-between mb-4 border-bottom"
       >
-        <svg class="bi me-2" width="40" height="32">
-          <use xlink:href="#bootstrap"></use>
-        </svg>
-        <span class="fs-4">Simple header</span>
-      </a>
-
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a href="#" class="nav-link active" aria-current="page">Home</a>
-        </li>
-        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-      </ul>
+        <a class="nav-brand mx-3 d-md-none mx-3" href="/"
+          ><img
+            src="./images/logo2.webp"
+            alt="Brand Logo"
+            width="150"
+            height="80"
+        /></a>
+        <button
+          class="navbar-toggler mx-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbar"
+          aria-controls="navbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          id="navbar"
+          class="collapse navbar-collapse justify-content-center"
+        >
+          <ul class="navbar-nav fw-semibold align-items-center">
+            <li class="nav-item">
+              <a href="#" class="nav-link" aria-current="page">Hem</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link active">Produkter</a>
+            </li>
+            <li class="navbar-brand mx-3 d-none d-md-block">
+              <a class="nav-brand" href="/"
+                ><img
+                  src="./images/logo2.webp"
+                  alt="Brand Logo"
+                  width="151"
+                  height="80"
+              /></a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Om oss</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Recept</a></li>
+            <li class="nav-item">
+              <a href="cart.html" class="nav-link">
+                <div class="cart nav-item">
+                  <i class="bi bi-cart2"></i>
+                  <div
+                    id="cart-amount"
+                    class="cart-amount rounded-circle d-flex justify-content-center align-items-center bg-pastel-red text-light top-0 end-0 fs-7 fw-semibold"
+                  >
+                    0
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
     <main>
       <div class="container">
         <div
           class="store-items row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-3 align-items-stretch"
-        >
-          <div class="col">
-            <div class="card border-0">
-              <img
-                class="card-img-top rounded-4"
-                width="100%"
-                height="225"
-                src="./images/3-1.webp"
-                aria-label="Product Image"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h6 class="card-title">Red Velvet Cupcakes</h6>
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-end align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modal-test"
-                    >
-                      Mer info
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm">
-                      Lägg i varukorg
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
-              <div class="card-body">
-                <h6 class="card-title">Red Velvet Cupcakes</h6>
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary remove-item-button"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ></div>
       </div>
 
-      <div class="modals-container">
-        <div
-          class="modal fade"
-          id="modal-test"
-          tabindex="-1"
-          aria-labelledby="modal-test-label"
-          aria-hidden="true"
-        >
-          <div
-            class="modal-dialog modal-dialog-centered modal-fullscreen-md-down modal-lg"
-          >
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5>Red Velvet Cupcakes</h5>
+      <div class="modals-container"></div>
+    </main>
+
+    <template id="store-item-template">
+      <div class="col">
+        <div class="card border-0 h-100 align-items-top">
+          <img
+            class="card-img-top rounded-4 store-item-image"
+            width="376"
+            height="252"
+            aria-label="Product Image"
+            src=""
+            alt="Card image cap"
+          />
+          <div class="card-body h-100 d-flex flex-column">
+            <h5 class="card-title store-item-title"></h5>
+            <p class="card-text store-item-desc flex-grow-1"></p>
+            <div class="d-flex justify-content-end align-items-center h-20">
+              <div class="btn-group">
                 <button
                   type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <div id="carouselExample" class="carousel slide rounded-top">
-                  <div class="carousel-indicators">
-                    <button
-                      type="button"
-                      data-bs-target="#carouselExampleIndicators"
-                      data-bs-slide-to="0"
-                      class="active"
-                      aria-current="true"
-                      aria-label="Slide 1"
-                    ></button>
-                    <button
-                      type="button"
-                      data-bs-target="#carouselExampleIndicators"
-                      data-bs-slide-to="1"
-                      aria-label="Slide 2"
-                    ></button>
-                    <button
-                      type="button"
-                      data-bs-target="#carouselExampleIndicators"
-                      data-bs-slide-to="2"
-                      aria-label="Slide 3"
-                    ></button>
-                  </div>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img
-                        src="./images/3-1.webp"
-                        class="d-block w-100"
-                        alt=""
-                      />
-                    </div>
-                    <div class="carousel-item">
-                      <img
-                        src="./images/4-1.webp"
-                        class="d-block w-100"
-                        alt=""
-                      />
-                    </div>
-                    <div class="carousel-item">
-                      <img
-                        src="./images/2-1.webp"
-                        class="d-block w-100"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <button
-                    class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselExample"
-                    data-bs-slide="prev"
-                  >
-                    <span
-                      class="carousel-control-prev-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button
-                    class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselExample"
-                    data-bs-slide="next"
-                  >
-                    <span
-                      class="carousel-control-next-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-                </div>
-                <h5 class="m-3">Beskrivning:</h5>
-                <p class="m-3 mt-0">
-                  One of Magnolia Bakerys oldest and best-selling desserts, our
-                  classic-style red velvet cupcake is a crimson-colored,
-                  chocolate-flavored cake topped with whipped vanilla icing.
-                </p>
-                <h5 class="m-3">Ingredienser:</h5>
-                <p class="m-3 mt-0">
-                  Granulated Sugar, Cocoa Powder, Cake Flour, Baking Soda, Salt,
-                  Butter, Eggs, Milk, Sour Cream, Cider Vinegar, Vanilla
-                  Extract, Food Dye, AP Flour
-                </p>
-              </div>
-
-              <div class="modal-footer">
-                <input
-                  type="number"
-                  class="form-control text-center shop-item-quantity-input border-1"
-                  value="1"
-                  aria-label="Item amount"
-                />
-                <button type="button" class="btn btn-primary">
-                  Lägg till i varukord
+                  class="btn btn-sm btn-outline-secondary store-item-modal-button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modal-${item.id}"
+                >
+                  Mer info
+                </button>
+                <button type="button" class="btn btn-primary btn-sm">
+                  Lägg i varukorg
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
-    <footer>
-      <!-- place footer here -->
-    </footer>
+    </template>
+
+    <template id="store-item-modal-template">
+      <div
+        class="modal fade store-item-modal"
+        id="modal-test"
+        tabindex="-1"
+        aria-labelledby="modal-test-label"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog modal-dialog-centered modal-fullscreen-md-down modal-lg"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="store-item-title"></h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div id="carouselExample" class="carousel slide rounded-top">
+                <div class="carousel-indicators"></div>
+                <div class="carousel-inner"></div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExample"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExample"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <h5 class="m-3">Beskrivning:</h5>
+              <p class="m-3 mt-0 store-item-desc"></p>
+              <h5 class="m-3">Ingredienser:</h5>
+              <p class="m-3 mt-0 store-item-ingredients"></p>
+            </div>
+
+            <div class="modal-footer">
+              <input
+                type="number"
+                class="form-control text-center store-item-quantity-input border-1"
+                value="1"
+                aria-label="Item amount"
+              />
+              <button
+                type="button"
+                class="btn btn-primary shop-item-add-to-cart"
+                data-bs-dismiss="modal"
+              >
+                Lägg till i varukorg
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="modal-carousel-indicators-template">
+      <button
+        type="button"
+        data-bs-target="#item-${item.id}-carouselIndicators"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+    </template>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
