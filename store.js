@@ -51,6 +51,9 @@ function generateStore() {
       storeItem
         .querySelector(".store-item-modal-button")
         .setAttribute("data-bs-target", `#modal-${item.id}`);
+      storeItem.querySelector(".shop-item-add-to-cart").onclick = () => {
+        addItemToCart(item.id);
+      };
 
       store.append(storeItem);
 
@@ -73,6 +76,9 @@ function generateStore() {
         .classList.add(`quantity-input-${item.id}`);
       storeItemModal.querySelector(".shop-item-add-to-cart").onclick = () => {
         addItemToCart(item.id);
+      };
+      storeItemModal.querySelector(".shop-item-close").onclick = () => {
+        document.querySelector(`.quantity-input-${item.id}`).value = 1;
       };
 
       const imageCarousel = storeItemModal.querySelector(".carousel");
