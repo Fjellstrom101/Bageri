@@ -28,7 +28,7 @@
       <nav
         class="navbar d-flex fixed-top navbar-expand-md bg-white flex-wrap justify-content-between mb-4 border-bottom"
       >
-        <a class="nav-brand mx-3 d-md-none mx-3" href="/"
+        <a class="nav-brand mx-3 d-md-none mx-3" href="index.html"
           ><img
             src="./images/logo2.webp"
             alt="Brand Logo"
@@ -52,13 +52,13 @@
         >
           <ul class="navbar-nav fw-semibold align-items-center">
             <li class="nav-item">
-              <a href="/" class="nav-link" aria-current="page">Hem</a>
+              <a href="index.html" class="nav-link" aria-current="page">Hem</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link active">Produkter</a>
+              <a href="store.html" class="nav-link">Produkter</a>
             </li>
             <li class="navbar-brand mx-3 d-none d-md-block">
-              <a class="nav-brand" href="/"
+              <a class="nav-brand" href="index.html"
                 ><img
                   src="./images/logo2.webp"
                   alt="Brand Logo"
@@ -67,7 +67,7 @@
               /></a>
             </li>
             <li class="nav-item">
-              <a href="about.html" class="nav-link">Om oss</a>
+              <a href="about.html" class="nav-link active">Om oss</a>
             </li>
             <li class="nav-item">
               <a href="recipes.html" class="nav-link">Recept</a>
@@ -106,43 +106,56 @@
 
         <div class="row align-items-md-stretch">
           <div class="col-md-6">
-            <div class="h-100 p-5 text-bg-dark rounded-3">
-              <h2>Kontakta oss</h2>
-              <div class="container px-0">
+            <div class="h-100 p-5 bg-pastel-red rounded-3">
+              <h2 class="text-dark">Kontakta oss</h2>
+              <div class="container px-0 text-black pt-3">
                 <form novalidate>
-                  <div class="mb-3">
-                    <label for="" class="form-label">Email</label>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      placeholder="name@example.com"
+                    />
+                    <label for="name">Namn</label>
+                  </div>
+                  <div class="form-floating mb-3">
                     <input
                       type="email"
                       class="form-control"
-                      name=""
-                      id=""
-                      aria-describedby="emailHelpId"
-                      placeholder="abc@mail.com"
+                      id="email"
+                      placeholder="name@example.com"
                     />
-                    <small id="emailHelpId" class="form-text text-muted"
-                      >Help text</small
-                    >
+                    <label for="email">E-post</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <textarea
+                      class="form-control"
+                      id="message"
+                      rows="5"
+                      style="height: 200px"
+                    ></textarea>
+                    <label for="message">Meddelande</label>
                   </div>
                 </form>
               </div>
-              <button class="btn btn-outline-light" type="button">
-                Example button
-              </button>
             </div>
           </div>
           <div class="col-md-6">
-            <div class="h-100 p-5 bg-light border rounded-3">
+            <div class="h-100 p-5">
               <h2>Hitta hit</h2>
               <p>
-                Or, keep it light and add a border for some added definition to
-                the boundaries of your content. Be sure to look under the hood
-                at the source HTML here as we've adjusted the alignment and
-                sizing of both column's content for equal-height.
+                Hjärtligt välkommen till Bagar-Basses bageri & konditori!
+                Bagar-Basses bageri ligger i hjärtat av Trollhättan, precis bredvid macken-lekplatsen, ca. 2 minuter ifrån
+                avfarten vid E45:an.
               </p>
-              <button class="btn btn-outline-secondary" type="button">
-                Example button
-              </button>
+              <p>
+                <h6>Vår adress är:</h6>
+                Bagar-Basses bageri & konditori<br />Nydqvistsgatan 4A<br />
+                461 32 Trollhättan
+              </p>
+              <h6>Telefonnummer:</h6><span>0144-106 20</span>
+              <h6>E-post:</h6>info@bagarbasse.se</p>
             </div>
           </div>
         </div>

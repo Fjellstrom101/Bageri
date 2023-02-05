@@ -1,91 +1,91 @@
-body{
+body {
   padding-top: 8em;
 }
-.img-size{
-    /* 	padding: 0;
+.img-size {
+  /* 	padding: 0;
         margin: 0; */
-        height: 450px;
-        width: 700px;
-        background-size: cover;
-        overflow: hidden;
-    }
-    .modal-content {
-       width: 700px;
-      border:none;
-    }
-    .modal-body {
-       padding: 0;
-    }
-    
-    .carousel-control-prev-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
-        width: 30px;
-        height: 48px;
-    }
-    .carousel-control-next-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
-        width: 30px;
-        height: 48px;
-    }
-    .store-item-quantity-input{
-        width: 70px;
-    }
-    .cart {
-        position: relative;
-        color: rgba(0, 0, 0, 0.55);
-        font-size: 26px;
-        padding-right: 5px;
-      }
-      .cart-amount {
-        position: absolute;
-        height: 16px;
-        width: 16px;
-        font-size: 14px;
-      }
-      .bg-pastel-green{
-        background-color: #bae8d4;
-      }
-      .bg-pastel-purple{
-        background-color: #CDB4DB;
-      }
-      .bg-pastel-light-pink{
-        background-color: #FFC8DD;
-      }
-      .bg-pastel-pink{
-        background-color: #FFAFCC;
-      }
-      .bg-pastel-blue{
-        background-color: #A2D2FF;
-      }
-      .bg-pastel-turquoise{
-        background-color: #BDE0FE;
-      }
-      .bg-pastel-red{
-        background-color: #ef4035;
-      }
-      .font{
-        font-family: "Gatefold Demi",serif;
-      }
-      .bg-pastel-purple2{
-        background-color: #e7cbef;
-      }
-    }
-    .bg-pastel-red{
-      background-color: #d39c7d;
-    }
-    .flex-even {
-      flex: 1;
-    }
-    .map-container{
-      overflow:hidden;
-      padding-bottom:40%;
-      position:relative;
-      height:0;
-    }
-    .map-container iframe{
-      left:0;
-      top:0;
-      height:100%;
-      width:100%;
-      position:absolute;
-    }
+  height: 450px;
+  width: 700px;
+  background-size: cover;
+  overflow: hidden;
+}
+.modal-content {
+  width: 700px;
+  border: none;
+}
+.modal-body {
+  padding: 0;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+  width: 30px;
+  height: 48px;
+}
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+  width: 30px;
+  height: 48px;
+}
+.store-item-quantity-input {
+  width: 70px;
+}
+.cart {
+  position: relative;
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 26px;
+  padding-right: 5px;
+}
+.cart-amount {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  font-size: 14px;
+}
+.bg-pastel-green {
+  background-color: #bae8d4;
+}
+.bg-pastel-purple {
+  background-color: #cdb4db;
+}
+.bg-pastel-light-pink {
+  background-color: #ffc8dd;
+}
+.bg-pastel-pink {
+  background-color: #ffafcc;
+}
+.bg-pastel-blue {
+  background-color: #a2d2ff;
+}
+.bg-pastel-turquoise {
+  background-color: #bde0fe;
+}
+.bg-pastel-red {
+  background-color: #d39c7d;
+}
+.font {
+  font-family: "Gatefold Demi", serif;
+}
+.bg-pastel-purple2 {
+  background-color: #e7cbef;
+}
+
+.bg-pastel-red {
+  background-color: #d39c7d;
+}
+.flex-even {
+  flex: 1;
+}
+.map-container {
+  overflow: hidden;
+  padding-bottom: 40%;
+  position: relative;
+  height: 0;
+}
+.map-container iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
