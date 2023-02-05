@@ -23,7 +23,9 @@ function ready() {
       generateCart();
       addCartListeners();
       break;
+    default:
   }
+  updateTotalCartItems();
 }
 
 function generateStore() {
@@ -213,6 +215,7 @@ function removeCartItem(id) {
 
   saveCart();
   updateCartTotal();
+  updateTotalCartItems();
 }
 
 function quantityChanged(event) {
@@ -241,6 +244,7 @@ function addItemToCart(id) {
 
   document.querySelector(`.quantity-input-${id}`).value = 1;
   saveCart();
+  updateTotalCartItems();
 }
 
 function updateCartTotal() {
@@ -268,6 +272,8 @@ function updateTotalCartItems() {
   for (const cartItem of cart) {
     total += cartItem.amount;
   }
+  console.log(total);
+  document.querySelector(".cart-amount").textContent = total;
 }
 function getStoreItem(id) {
   return (
