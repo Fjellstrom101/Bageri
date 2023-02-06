@@ -178,9 +178,9 @@ function generateCart() {
   updateCartTotal();
 }
 function initRecipes() {
-  document.querySelector(".search-button").onclick = fetchRecipes;
+  document.querySelector(".search-button").onclick = searchRecipes;
 }
-async function fetchRecipes() {
+async function searchRecipes() {
   const searchBox = document.querySelector(".search-box");
   const searchString = searchBox.value;
 
@@ -211,11 +211,47 @@ function addRecipe(id, title, image) {
     .querySelector("template#recipe-template")
     .content.cloneNode(true);
   const recipesDiv = document.querySelector(".recipes");
+
+  template.querySelector(".recipe-item").onclick = () => {
+    showRecipe(id);
+  };
   template.querySelector(".recipe-item-image").src = image;
   template.querySelector(".recipe-item-title").textContent = title;
   recipesDiv.append(template);
 }
+async function showRecipe(id) {
+  const url = new URL(
+    `https://api.spoonacular.com/recipes/${id}/information?apiKey=a4dd2ff7b76f417da04827b30d8f360e&includeNutrition=false`
+  );
 
+  const response = await fetch(url);
+
+  if (response.status === 200) {
+    const jsonResponse = await response.json();
+    const modal = document.querySelector("#recipe-modal");
+    const ingredients = document.querySelector(".ingredient-list");
+    const instructions = document.querySelector(".instruction-list");
+    removeAllChildNodes(ingredients);
+    removeAllChildNodes(instructions);
+    modal.querySelector(".recipe-title").textContent = jsonResponse.title;
+    modal.querySelector(".recipe-image").src = jsonResponse.image;
+
+    for (const ingredient of jsonResponse.extendedIngredients) {
+      const listItem = document.createElement("li");
+      listItem.classList.add("list-group-item");
+      listItem.textContent = ingredient.original;
+      ingredients.append(listItem);
+    }
+    for (const step of jsonResponse.analyzedInstructions[0].steps) {
+      const listItem = document.createElement("li");
+      listItem.classList.add("list-group-item");
+      listItem.textContent = step.step;
+      instructions.append(listItem);
+    }
+  }
+  const modal = new bootstrap.Modal(document.getElementById("recipe-modal"));
+  modal.show();
+}
 function addCartListeners() {
   // let removeCartItemButtons =
   //   document.getElementsByClassName("delete-cart-item");
