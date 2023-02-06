@@ -23,6 +23,9 @@ function ready() {
       generateCart();
       addCartListeners();
       break;
+    case "recipes":
+      initRecipes();
+      break;
     default:
   }
   updateTotalCartItems();
@@ -173,6 +176,44 @@ function generateCart() {
   }
 
   updateCartTotal();
+}
+function initRecipes() {
+  document.querySelector(".search-button").onclick = fetchRecipes;
+}
+async function fetchRecipes() {
+  const searchBox = document.querySelector(".search-box");
+  const searchString = searchBox.value;
+
+  if (searchString.length > 3) {
+    const apiKey = "a4dd2ff7b76f417da04827b30d8f360e";
+    const url = new URL("https://api.spoonacular.com/recipes/complexSearch");
+    let recipes = [];
+    url.searchParams.append("apiKey", apiKey);
+    url.searchParams.append("type", "dessert, bread");
+    url.searchParams.append("query", searchString);
+
+    const response = await fetch(url);
+
+    if (response.status === 200) {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      removeAllChildNodes(document.querySelector(".recipes"));
+      for (const result of jsonResponse.results) {
+        addRecipe(result.id, result.title, result.image);
+      }
+    }
+  } else {
+    console.log("För kort");
+  }
+}
+function addRecipe(id, title, image) {
+  const template = document
+    .querySelector("template#recipe-template")
+    .content.cloneNode(true);
+  const recipesDiv = document.querySelector(".recipes");
+  template.querySelector(".recipe-item-image").src = image;
+  template.querySelector(".recipe-item-title").textContent = title;
+  recipesDiv.append(template);
 }
 
 function addCartListeners() {

@@ -20,10 +20,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
     />
+    <script src="store.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
+  <body id="recipes">
     <header>
       <nav
         class="navbar d-flex fixed-top navbar-expand-md bg-white flex-wrap justify-content-between mb-4 border-bottom"
@@ -101,13 +102,13 @@
             <div class="input-group mb-3 w-50">
               <input
                 type="text"
-                class="form-control"
+                class="form-control search-box"
                 placeholder="Sökord"
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
+                aria-label="Search box"
+                aria-describedby="search-button"
               />
               <button
-                class="btn btn-outline-secondary"
+                class="btn btn-outline-secondary search-button"
                 type="button"
                 id="search-button"
                 aria-label="Search Button"
@@ -120,7 +121,7 @@
       </div>
       <div class="container">
         <div
-          class="store-items row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3"
+          class="recipes row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3"
         >
           <div class="col">
             <div class="card border-0 h-100 align-items-top">
@@ -296,6 +297,22 @@
     <footer>
       <!-- place footer here -->
     </footer>
+    <template id="recipe-template"
+      ><div class="col">
+        <div class="card border-0 h-100 align-items-top">
+          <img
+            class="card-img-top rounded-4 recipe-item-image"
+            width="312"
+            height="231"
+            aria-label="Recipe Image"
+            src="https://spoonacular.com/recipeImages/657850-312x231.jpg"
+            alt="Card image cap"
+          />
+          <div class="card-body h-100 d-flex flex-column">
+            <h5 class="card-title recipe-item-title"></h5>
+          </div>
+        </div></div
+    ></template>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
