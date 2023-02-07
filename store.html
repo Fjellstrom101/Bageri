@@ -34,9 +34,16 @@
   </head>
 
   <body id="store">
-    <header>
+    <a href="store.html" class="text-decoration-none text-dark">
+      <div class="bg-pastel-red">
+        <p class="text-center font-ambit-regular fw-semibold p-2">
+          Passa på! Just nu har vi fina alla hjärtans dag erbjudanden i shoppen!
+        </p>
+      </div>
+    </a>
+    <header class="sticky-top">
       <nav
-        class="navbar d-flex fixed-top navbar-expand-md bg-white flex-wrap justify-content-between mb-4 border-bottom"
+        class="navbar font-ambit d-flex navbar-expand-md bg-white flex-wrap justify-content-between mb-4 border-bottom"
       >
         <a class="nav-brand mx-3 d-md-none mx-3" href="index.html"
           ><img
@@ -100,7 +107,10 @@
       </nav>
     </header>
     <main>
+      <div class="container text-center pb-4">
+      </div>
       <div class="container">
+        <h1 class="fs-1 font-gatefold-demi text-center pb-5">Cupcakes:</h1>
         <div
           class="store-items row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-3 align-items-stretch"
         ></div>
@@ -122,8 +132,8 @@
             alt="Card image cap"
           />
           <div class="card-body h-100 d-flex flex-column">
-            <h5 class="card-title store-item-title"></h5>
-            <p class="card-text store-item-desc flex-grow-1"></p>
+            <h5 class="card-title store-item-title font-gt-alpina"></h5>
+            <p class="card-text store-item-desc flex-grow-1 font-ambit"></p>
             <div class="d-flex justify-content-end align-items-center h-20">
               <div class="btn-group">
                 <button
@@ -160,7 +170,7 @@
         >
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="store-item-title"></h5>
+              <h5 class="store-item-title font-gt-alpina"></h5>
               <button
                 type="button"
                 class="btn-close shop-item-close"
@@ -197,10 +207,10 @@
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
-              <h5 class="m-3">Beskrivning:</h5>
-              <p class="m-3 mt-0 store-item-desc"></p>
-              <h5 class="m-3">Ingredienser:</h5>
-              <p class="m-3 mt-0 store-item-ingredients"></p>
+              <h5 class="m-3 font-gt-alpina">Beskrivning:</h5>
+              <p class="m-3 mt-0 store-item-desc font-ambit"></p>
+              <h5 class="m-3 font-gt-alpina">Ingredienser:</h5>
+              <p class="m-3 mt-0 store-item-ingredients font-ambit"></p>
             </div>
 
             <div class="modal-footer">
