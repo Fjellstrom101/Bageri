@@ -107,34 +107,43 @@
       </nav>
     </header>
     <main>
-      <div class="container text-center pb-4">
-      </div>
-      <div class="container">
-        <h1 class="fs-1 font-gatefold-demi text-center pb-5">Cupcakes:</h1>
-        <div
-          class="store-items row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-3 align-items-stretch"
-        ></div>
-      </div>
-
+      <div class="container-fluid store-container p-0"></div>
       <div class="modals-container"></div>
     </main>
 
+    <template id="store-category-template">
+      <div class="container-fluid p-2">
+        <div class="container store-category my-5">
+          <h1
+            class="fs-1 font-gatefold-demi text-center pb-5 category-title"
+          ></h1>
+          <div
+            class="store-items row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-3 align-items-stretch"
+          ></div>
+        </div>
+      </div>
+    </template>
+
     <template id="store-item-template">
-      <div class="col">
-        <div class="card border-0 h-100 align-items-top">
-          <img
-            class="card-img-top rounded-4 store-item-image"
-            width="376"
-            height="252"
-            style="height: auto"
-            aria-label="Product Image"
-            src=""
-            alt="Card image cap"
-          />
-          <div class="card-body h-100 d-flex flex-column">
+      <div class="col store-item">
+        <div class="card border-0 h-100 align-items-top bg-transparent">
+          <div
+            class="card-img-top-wrapper rounded-4 d-inline-block overflow-hidden"
+          >
+            <img
+              class="card-img-top rounded-4 store-item-image"
+              width="376"
+              height="252"
+              style="height: auto"
+              aria-label="Product Image"
+              src=""
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body d-flex flex-column">
             <h5 class="card-title store-item-title font-gt-alpina"></h5>
             <p class="card-text store-item-desc flex-grow-1 font-ambit"></p>
-            <div class="d-flex justify-content-end align-items-center h-20">
+            <!-- <div class="d-flex justify-content-end align-items-center h-20">
               <div class="btn-group">
                 <button
                   type="button"
@@ -151,7 +160,7 @@
                   Lägg i varukorg
                 </button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -222,7 +231,7 @@
               />
               <button
                 type="button"
-                class="btn btn-primary shop-item-add-to-cart"
+                class="btn btn-primary shop-item-add-to-cart bg-pastel-red border-0 font-ambit text-dark fw-bold"
                 data-bs-dismiss="modal"
               >
                 Lägg till i varukorg

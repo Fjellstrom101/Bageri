@@ -32,10 +32,12 @@ function ready() {
 }
 
 function generateStore() {
-  let store = document.querySelector(".store-items");
-  removeAllChildNodes(store);
+  let storeContainer = document.querySelector(".store-container");
   let modals = document.querySelector(".modals-container");
 
+  const storeCategoryTemplate = document.querySelector(
+    "template#store-category-template"
+  );
   const storeItemTemplate = document.querySelector(
     "template#store-item-template"
   );
@@ -46,6 +48,10 @@ function generateStore() {
   let generatedModals = "";
 
   for (const category of storeItems) {
+    let categoryContainer = storeCategoryTemplate.content.cloneNode(true);
+    categoryContainer.querySelector(".category-title").textContent =
+      category.name;
+
     for (const item of category.items) {
       const storeItem = storeItemTemplate.content.cloneNode(true);
       const storeItemModal = modalTemplate.content.cloneNode(true);
@@ -53,14 +59,18 @@ function generateStore() {
       storeItem.querySelector(".store-item-title").innerText = item.name;
       storeItem.querySelector(".store-item-desc").innerText = item.desc;
       storeItem.querySelector(".store-item-image").src = item.thumbnail;
-      storeItem
-        .querySelector(".store-item-modal-button")
-        .setAttribute("data-bs-target", `#modal-${item.id}`);
-      storeItem.querySelector(".shop-item-add-to-cart").onclick = () => {
-        addItemToCart(item.id);
-      };
 
-      store.append(storeItem);
+      // storeItem.querySelector(".store-item").onclick = () => {
+      //   const itemModal = new bootstrap.Modal(
+      //     document.getElementById(`#modal-${item.id}`)
+      //   );
+      //   itemModal.show();
+      // };
+      // storeItem
+      //   .querySelector(".store-item-modal-button")
+      //   .setAttribute("data-bs-target", #modal-${item.id});
+
+      categoryContainer.querySelector(".store-items").append(storeItem);
 
       //Modal
       storeItemModal.querySelector(".store-item-modal").id = `modal-${item.id}`;
@@ -129,6 +139,7 @@ function generateStore() {
       }
       modals.append(storeItemModal);
     }
+    storeContainer.append(categoryContainer);
   }
 }
 function addStoreListeners() {

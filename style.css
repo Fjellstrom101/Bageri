@@ -15,8 +15,6 @@
   src: url("./fonts/Ambit-Regular.woff") format("woff");
 }
 .store-item-modal .img-size {
-  /* 	padding: 0;
-        margin: 0; */
   height: 450px;
   width: 700px;
   background-size: cover;
@@ -53,7 +51,7 @@
   position: absolute;
   height: 16px;
   width: 16px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .bg-pastel-green {
   background-color: #bae8d4;
@@ -65,7 +63,10 @@
   background-color: #ffc8dd;
 }
 .bg-pastel-pink {
-  background-color: #ffafcc;
+  background-color: #fde5dd;
+}
+.bg-pastel-yellow {
+  background-color: #ffeab2;
 }
 .bg-pastel-blue {
   background-color: #a2d2ff;
@@ -82,12 +83,11 @@
 }
 .font-gt-alpina {
   font-family: "GT Alpina", serif;
-  
 }
 .font-ambit {
   font-family: "Ambit", serif;
 }
-.font-ambit-regular{
+.font-ambit-regular {
   font-family: "Ambit Regular", serif;
 }
 .bg-pastel-purple2 {
@@ -136,8 +136,19 @@
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 32rem;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-
+.carousel-item-1 {
+  background-image: url(./images/carousel-1.jpg);
+}
+.carousel-item-2 {
+  background-image: url(./images/carousel-2.webp);
+}
+.carousel-item-3 {
+  background-image: url(./images/carousel-3.webp);
+}
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
@@ -188,4 +199,17 @@
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+.shop-item-add-to-cart:hover {
+  background-color: #b77e63 !important;
+}
+.store-item:hover {
+  cursor: pointer;
+}
+.store-item:hover img {
+  transform: scale(1.06);
+  transition: transform 100ms linear;
+}
+.card-img-top-wrapper {
+  aspect-ratio: 597 / 400;
 }
