@@ -99,7 +99,7 @@ let storeItems = [
     ],
   },
   {
-    name: "Cookies",
+    name: "Kakor",
     items: [
       {
         id: 9,
@@ -158,7 +158,7 @@ let storeItems = [
     ],
   },
   {
-    name: "Cookies",
+    name: "Kakor",
     items: [
       {
         id: 9,

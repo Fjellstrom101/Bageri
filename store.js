@@ -56,6 +56,9 @@ function generateStore() {
       const storeItem = storeItemTemplate.content.cloneNode(true);
       const storeItemModal = modalTemplate.content.cloneNode(true);
       //Store
+      storeItem
+        .querySelector(".store-item")
+        .classList.add(`store-item-${item.id}`);
       storeItem.querySelector(".store-item-title").innerText = item.name;
       storeItem.querySelector(".store-item-desc").innerText = item.desc;
       storeItem.querySelector(".store-item-image").src = item.thumbnail;
@@ -138,6 +141,14 @@ function generateStore() {
         imageCarousel.querySelector(".carousel-inner").append(carouselImageDiv);
       }
       modals.append(storeItemModal);
+      categoryContainer.querySelector(`.store-item-${item.id}`).onclick =
+        () => {
+          const itemModal = new bootstrap.Modal(
+            document.getElementById(`modal-${item.id}`)
+          );
+          itemModal.show();
+          console.log("HEJ");
+        };
     }
     storeContainer.append(categoryContainer);
   }
@@ -183,7 +194,7 @@ function generateCart() {
       cartElement.append(itemElement);
     }
   } else {
-    cartElement.innerHTML = "<tr><td>Din kundvagn är tom!<td></tr>"; //TODO
+    cartElement.innerHTML = "<tr><td>Din kundvagn är tom<td></tr>"; //TODO
   }
 
   updateCartTotal();
@@ -214,7 +225,7 @@ async function searchRecipes() {
       }
     }
   } else {
-    console.log("För kort");
+    console.log("För kort sökord");
   }
 }
 function addRecipe(id, title, image) {

@@ -1,18 +1,22 @@
 @font-face {
   font-family: "Gatefold-Demibold";
   src: url("./fonts/Gatefold-Demibold.woff") format("woff");
+  font-display: swap
 }
 @font-face {
   font-family: "GT Alpina";
   src: url("./fonts/GT-Alpina-Standard-Regular.woff") format("woff");
+  font-display: swap
 }
 @font-face {
   font-family: "Ambit";
   src: url("./fonts/Ambit-Light.woff") format("woff");
+  font-display: swap
 }
 @font-face {
   font-family: "Ambit Regular";
   src: url("./fonts/Ambit-Regular.woff") format("woff");
+  font-display: swap
 }
 .store-item-modal .img-size {
   height: 450px;
@@ -79,7 +83,6 @@
 }
 .font-gatefold-demi {
   font-family: "Gatefold Demibold", serif;
-  color: #00211a;
 }
 .font-gt-alpina {
   font-family: "GT Alpina", serif;
@@ -201,7 +204,7 @@
   }
 }
 .shop-item-add-to-cart:hover {
-  background-color: #b77e63 !important;
+  background-color: #d39c7d !important;
 }
 .store-item:hover {
   cursor: pointer;
@@ -212,4 +215,16 @@
 }
 .card-img-top-wrapper {
   aspect-ratio: 597 / 400;
+}
+.featurette-image {
+  aspect-ratio: 1 / 1;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.featurette-image-1{
+  background-image: url(./images/featurette-1.webp);
+}
+.featurette-image-2{
+  background-image: url(./images/featurette-2.webp);
 }

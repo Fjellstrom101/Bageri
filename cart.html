@@ -11,7 +11,7 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      async
+      media="screen"
     />
     <!-- Bootstrap CSS v5.2.1 -->
     <link
@@ -19,7 +19,7 @@
       rel="stylesheet"
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
-      async
+      media="screen"
     />
     <link
       rel="stylesheet"
@@ -107,11 +107,15 @@
       <div class="container">
         <div class="row w-100">
           <div class="col-lg-12 col-md-12 col-12">
-            <h3 class="display-5 mb-2 text-center">Kundvagn</h3>
-            <p class="mb-5 text-center">
+            <h2 class="display-5 mb-2 text-center font-gatefold-demi">
+              Kundvagn
+            </h2>
+            <p class="mb-5 text-center font-ambit-regular">
               <i class="text-info font-weight-bold">3</i> varor i din kundvagn
             </p>
-            <table class="table table-condensed table-responsive shopping-cart">
+            <table
+              class="table table-condensed table-responsive shopping-cart font-ambit"
+            >
               <thead>
                 <tr>
                   <th style="width: 60%">Produkt</th>
@@ -122,8 +126,8 @@
               </thead>
               <tbody class="shopping-cart-items"></tbody>
             </table>
-            <div class="float-end text-end">
-              <h4>Totalt:</h4>
+            <div class="float-end text-end font-ambit-regular">
+              <h1 class="h4">Totalt:</h1>
               <h1 class="cart-total-price">$99.00</h1>
             </div>
           </div>
@@ -132,13 +136,15 @@
           <div class="col-sm-6 order-md-2 text-end">
             <a
               href="#"
-              class="btn btn-primary mb-4 btn-lg pl-5 pr-5 checkout-button"
+              class="btn bg-pastel-pink border-0 font-ambit-regular btn-primary mb-4 btn-lg pl-5 pr-5 checkout-button text-dark"
               >Checkout</a
             >
           </div>
-          <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-start">
+          <div
+            class="col-sm-6 font-ambit-regular mb-3 mb-m-1 order-md-1 text-md-start"
+          >
             <a href="store.html">
-              <i class="fas fa-arrow-left mr-2"></i> Continue Shopping</a
+              <i class="fas fa-arrow-left mr-2"></i> Fortsätt handla</a
             >
           </div>
         </div>
@@ -159,7 +165,7 @@
               />
             </div>
             <div class="col-md-9 text-start mt-sm-2">
-              <h4 class="cart-item-title"></h4>
+              <p class="h4 cart-item-title font-ambit-regular"></p>
               <p class="font-weight-light cart-item-category"></p>
             </div>
           </div>
