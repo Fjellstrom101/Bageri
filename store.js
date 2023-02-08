@@ -47,10 +47,17 @@ function generateStore() {
 
   let generatedModals = "";
 
-  for (const category of storeItems) {
+  for (let i = 0; i < storeItems.length; i++) {
+    const category = storeItems[i];
     let categoryContainer = storeCategoryTemplate.content.cloneNode(true);
     categoryContainer.querySelector(".category-title").textContent =
       category.name;
+
+    if ((i + 1) % 2 === 0 && i !== storeItems.length - 1) {
+      categoryContainer
+        .querySelector(".category-container")
+        .classList.add("bg-pastel-yellow");
+    }
 
     for (const item of category.items) {
       const storeItem = storeItemTemplate.content.cloneNode(true);
@@ -62,16 +69,6 @@ function generateStore() {
       storeItem.querySelector(".store-item-title").innerText = item.name;
       storeItem.querySelector(".store-item-desc").innerText = item.desc;
       storeItem.querySelector(".store-item-image").src = item.thumbnail;
-
-      // storeItem.querySelector(".store-item").onclick = () => {
-      //   const itemModal = new bootstrap.Modal(
-      //     document.getElementById(`#modal-${item.id}`)
-      //   );
-      //   itemModal.show();
-      // };
-      // storeItem
-      //   .querySelector(".store-item-modal-button")
-      //   .setAttribute("data-bs-target", #modal-${item.id});
 
       categoryContainer.querySelector(".store-items").append(storeItem);
 

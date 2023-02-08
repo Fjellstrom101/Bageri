@@ -92,7 +92,7 @@
                   <i class="bi bi-cart2"></i>
                   <div
                     id="cart-amount"
-                    class="cart-amount rounded-circle d-flex justify-content-center align-items-center bg-pastel-red text-white top-0 end-0 fs-7 fw-semibold"
+                    class="cart-amount cart-amount-div rounded-circle d-flex justify-content-center align-items-center bg-pastel-red text-white top-0 end-0 fs-7 fw-semibold"
                   >
                     0
                   </div>
@@ -107,12 +107,9 @@
       <div class="container">
         <div class="row w-100">
           <div class="col-lg-12 col-md-12 col-12">
-            <h2 class="display-5 mb-2 text-center font-gatefold-demi">
+            <h2 class="display-5 mb-5 text-center font-gatefold-demi">
               Kundvagn
             </h2>
-            <p class="mb-5 text-center font-ambit-regular">
-              <i class="text-info font-weight-bold">3</i> varor i din kundvagn
-            </p>
             <table
               class="table table-condensed table-responsive shopping-cart font-ambit"
             >
@@ -128,7 +125,7 @@
             </table>
             <div class="float-end text-end font-ambit-regular">
               <h1 class="h4">Totalt:</h1>
-              <h1 class="cart-total-price">$99.00</h1>
+              <h1 class="cart-total-price"></h1>
             </div>
           </div>
         </div>
@@ -136,23 +133,52 @@
           <div class="col-sm-6 order-md-2 text-end">
             <a
               href="#"
-              class="btn bg-pastel-pink border-0 font-ambit-regular btn-primary mb-4 btn-lg pl-5 pr-5 checkout-button text-dark"
-              >Checkout</a
+              class="btn btn-pastel-pink border-0 font-ambit-regular btn-primary mb-4 btn-lg pl-5 pr-5 checkout-button text-dark"
+              >Placera order</a
             >
           </div>
           <div
             class="col-sm-6 font-ambit-regular mb-3 mb-m-1 order-md-1 text-md-start"
           >
-            <a href="store.html">
-              <i class="fas fa-arrow-left mr-2"></i> Fortsätt handla</a
+            <a
+              href="store.html"
+              class="btn btn-pastel-yellow border-0 font-ambit-regular btn-primary mb-4 btn-lg pl-5 pr-5 checkout-button text-dark"
+            >
+              Fortsätt handla</a
             >
           </div>
         </div>
       </div>
     </main>
-    <footer>
-      <!-- place footer here -->
-    </footer>
+    <div
+      class="container-fluid bg-pastel-red font-ambit-regular"
+      style="height: 300px"
+    >
+      <div class="container">
+        <footer class="py-5">
+          <ul class="nav justify-content-center pb-3 mb-3">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link px-2 text-muted">Hem</a>
+            </li>
+            <li class="nav-item">
+              <a href="store.html" class="nav-link px-2 text-muted"
+                >Produkter</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="about.html" class="nav-link px-2 text-muted">Om oss</a>
+            </li>
+            <li class="nav-item">
+              <a href="recipes.html" class="nav-link px-2 text-muted">Recept</a>
+            </li>
+            <li class="nav-item">
+              <a href="cart.html" class="nav-link px-2 text-muted">Varukorg</a>
+            </li>
+          </ul>
+          <p class="text-center text-muted">© 2023 BagarBasse AB</p>
+        </footer>
+      </div>
+    </div>
     <template id="cart-item-template">
       <tr class="shopping-cart-item">
         <td data-th="Product">
