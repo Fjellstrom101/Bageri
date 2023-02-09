@@ -17,11 +17,9 @@ function ready() {
   switch (document.body.id) {
     case "store":
       generateStore();
-      addStoreListeners();
       break;
     case "cart":
       generateCart();
-      addCartListeners();
       break;
     case "recipes":
       initRecipes();
@@ -53,10 +51,10 @@ function generateStore() {
     categoryContainer.querySelector(".category-title").textContent =
       category.name;
 
-    if ((i + 1) % 2 === 0 && i !== storeItems.length - 1) {
+    if (category.background !== "") {
       categoryContainer
         .querySelector(".category-container")
-        .classList.add("bg-pastel-yellow");
+        .classList.add(category.background);
     }
 
     for (const item of category.items) {
@@ -121,7 +119,7 @@ function generateStore() {
         const carouselImageImg = document.createElement("img");
         carouselImageDiv.append(carouselImageImg);
 
-        carouselImageImg.setAttribute("src", item.images[i].image);
+        carouselImageImg.setAttribute("src", item.images[i]);
         carouselImageImg.classList.add("d-block", "w-100");
 
         if (i == 0) {
@@ -330,10 +328,7 @@ function addItemToCart(id) {
   let amount = parseInt(document.querySelector(`.quantity-input-${id}`).value);
 
   if (search === undefined) {
-    cart.push({
-      id: id,
-      amount: amount,
-    });
+    cart.push(new CartItem(id, amount));
   } else {
     search.amount += amount;
   }
