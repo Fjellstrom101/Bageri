@@ -18,6 +18,14 @@
   src: url("./fonts/Ambit-Regular.woff") format("woff");
   font-display: swap;
 }
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .store-item-modal .img-size {
   height: 450px;
   width: 700px;
@@ -214,4 +222,14 @@
 }
 .card-img-top-wrapper {
   aspect-ratio: 597 / 400;
+}
+.checkout-cupcake {
+  background-image: url(./images/checkout.png);
+  height: 128px;
+  width: 128px;
+  filter: invert(79%) sepia(4%) saturate(1021%) hue-rotate(324deg)
+    brightness(117%) contrast(98%);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

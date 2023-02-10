@@ -81,15 +81,23 @@ function generateStore() {
 
       storeItemModal.querySelector(".store-item-title").innerText = item.name;
       storeItemModal.querySelector(".store-item-desc").innerText = item.desc;
+      storeItemModal.querySelector(
+        ".store-item-price"
+      ).textContent = `${item.price.toFixed(2)} kr`;
       storeItemModal.querySelector(".store-item-ingredients").innerText =
         item.ingredients;
 
       storeItemModal
         .querySelector(".store-item-quantity-input")
         .classList.add(`quantity-input-${item.id}`);
+      storeItemModal
+        .querySelector(".store-item-quantity-input")
+        .addEventListener("change", quantityChanged);
+
       storeItemModal.querySelector(".shop-item-add-to-cart").onclick = () => {
         addItemToCart(item.id);
       };
+
       storeItemModal.querySelector(".shop-item-close").onclick = () => {
         document.querySelector(`.quantity-input-${item.id}`).value = 1;
       };
@@ -148,21 +156,6 @@ function generateStore() {
     storeContainer.append(categoryContainer);
   }
 }
-function addStoreListeners() {
-  let addToCartButtons = document.getElementsByClassName("shop-item-button");
-  for (let i = 0; i < addToCartButtons.length; i++) {
-    let button = addToCartButtons[i];
-    button.addEventListener("click", addToCartClicked);
-  }
-
-  let quantityInputs = document.getElementsByClassName(
-    "store-item-quantity-input"
-  );
-  for (let i = 0; i < quantityInputs.length; i++) {
-    let input = quantityInputs[i];
-    input.addEventListener("change", quantityChanged);
-  }
-}
 function generateCart() {
   loadCart();
 
@@ -170,6 +163,7 @@ function generateCart() {
   removeAllChildNodes(cartElement);
 
   const template = document.querySelector("template#cart-item-template");
+  let total = 0;
 
   if (cart.length !== 0) {
     for (const cartItem of cart) {
@@ -177,22 +171,40 @@ function generateCart() {
       let itemInfo = getStoreItem(cartItem.id);
 
       itemElement.querySelector("tr").id = `cart-item-${cartItem.id}`;
+      itemElement
+        .querySelector("tr")
+        .setAttribute("store-item-id", cartItem.id);
       itemElement.querySelector(".cart-item-image").src = itemInfo.thumbnail;
       itemElement.querySelector(".cart-item-title").innerText = itemInfo.name;
-      itemElement.querySelector(".cart-item-price").innerText = itemInfo.price;
+      itemElement.querySelector(
+        ".cart-item-price"
+      ).innerText = `${itemInfo.price.toFixed(2)} kr`;
       itemElement.querySelector(".cart-item-quantity-input").value =
         cartItem.amount;
+      itemElement
+        .querySelector(".cart-item-quantity-input")
+        .addEventListener("change", quantityChanged);
       itemElement.querySelector(".delete-cart-item").onclick = () => {
         removeCartItem(cartItem.id);
       };
 
       cartElement.append(itemElement);
+
+      total += cartItem.amount * itemInfo.price;
     }
   } else {
     cartElement.innerHTML = "<tr><td>Din kundvagn är tom<td></tr>"; //TODO
   }
 
-  updateCartTotal();
+  if (total === 0) {
+    document.querySelector(".checkout-button").setAttribute("disabled", "");
+  }
+
+  document.querySelector(".checkout-button").onclick = checkout;
+  document.querySelector(".cart-total-price").innerText =
+    total.toFixed(2) + " kr";
+
+  //updateCartTotal();
 }
 function initRecipes() {
   document.querySelector(".search-button").onclick = searchRecipes;
@@ -269,36 +281,16 @@ async function showRecipe(id) {
   const modal = new bootstrap.Modal(document.getElementById("recipe-modal"));
   modal.show();
 }
-function addCartListeners() {
-  // let removeCartItemButtons =
-  //   document.getElementsByClassName("delete-cart-item");
-  // for (let i = 0; i < removeCartItemButtons.length; i++) {
-  //   let button = removeCartItemButtons[i];
-  //   button.addEventListener("click", removeCartItem);
-  // }
 
-  let quantityInputs = document.getElementsByClassName(
-    "cart-item-quantity-input"
-  );
-  for (let i = 0; i < quantityInputs.length; i++) {
-    let input = quantityInputs[i];
-    input.addEventListener("change", quantityChanged);
-  }
+function checkout() {
+  cart = [];
 
-  document
-    .getElementsByClassName("checkout-button")[0]
-    .addEventListener("click", checkoutClicked);
-}
+  saveCart();
+  generateCart();
+  updateTotalCartItems();
 
-function checkoutClicked() {
-  alert("Thank you for your purchase");
-  let cartItems = document.getElementsByClassName("shopping-cart-items")[0];
-
-  while (cartItems.hasChildNodes()) {
-    cartItems.removeChild(cartItems.firstChild);
-  }
-
-  updateCartTotal();
+  document.querySelector(".cart-container").classList.add("d-none");
+  document.querySelector(".checkout-container").classList.remove("d-none");
 }
 
 function removeCartItem(id) {
@@ -308,8 +300,9 @@ function removeCartItem(id) {
   cart = cart.filter((item) => item.id !== id);
 
   saveCart();
-  updateCartTotal();
+  //updateCartTotal();
   updateTotalCartItems();
+  generateCart();
 }
 
 function quantityChanged(event) {
@@ -318,7 +311,12 @@ function quantityChanged(event) {
     input.value = 1;
   }
   if (document.body.id === "cart") {
-    updateCartTotal();
+    const itemId = input.closest("tr").getAttribute("store-item-id");
+    let cartItem = cart.find((x) => x.id == itemId);
+    cartItem.amount = parseInt(input.value);
+    saveCart();
+    updateTotalCartItems();
+    generateCart();
   }
 }
 
@@ -338,32 +336,11 @@ function addItemToCart(id) {
   updateTotalCartItems();
 }
 
-function updateCartTotal() {
-  let cartItemContainer = document.getElementsByClassName(
-    "shopping-cart-items"
-  )[0];
-  let cartRows = cartItemContainer.getElementsByClassName("shopping-cart-item");
-  let total = 0;
-  for (let i = 0; i < cartRows.length; i++) {
-    let cartRow = cartRows[i];
-    let priceElement = cartRow.getElementsByClassName("cart-item-price")[0];
-    let quantityElement = cartRow.getElementsByClassName(
-      "cart-item-quantity-input"
-    )[0];
-    let price = parseFloat(priceElement.innerText);
-    let quantity = quantityElement.value;
-    total = total + price * quantity;
-  }
-  total = Math.round(total * 100) / 100;
-  document.getElementsByClassName("cart-total-price")[0].innerText =
-    total + " kr";
-}
 function updateTotalCartItems() {
   let total = 0;
   for (const cartItem of cart) {
     total += cartItem.amount;
   }
-  console.log(total);
   document.querySelector(".cart-amount").textContent = total;
 }
 function getStoreItem(id) {
