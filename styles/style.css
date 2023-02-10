@@ -1,22 +1,27 @@
 @font-face {
   font-family: "Gatefold-Demibold";
-  src: url("./fonts/Gatefold-Demibold.woff") format("woff");
+  src: url("../fonts/Gatefold-Demibold.woff") format("woff");
   font-display: swap;
 }
 @font-face {
   font-family: "GT Alpina";
-  src: url("./fonts/GT-Alpina-Standard-Regular.woff") format("woff");
+  src: url("../fonts/GT-Alpina-Standard-Regular.woff") format("woff");
   font-display: swap;
 }
 @font-face {
   font-family: "Ambit";
-  src: url("./fonts/Ambit-Light.woff") format("woff");
+  src: url("../fonts/Ambit-Light.woff") format("woff");
   font-display: swap;
 }
 @font-face {
   font-family: "Ambit Regular";
-  src: url("./fonts/Ambit-Regular.woff") format("woff");
+  src: url("../fonts/Ambit-Regular.woff") format("woff");
   font-display: swap;
+}
+@font-face {
+  font-display: swap;
+  font-family: "bootstrap-icons";
+  src: url("../fonts/bootstrap-icons.woff2") format("woff2");
 }
 html {
   height: 100%;
@@ -144,13 +149,13 @@ body {
   background-repeat: no-repeat;
 }
 .carousel-item-1 {
-  background-image: url(./images/carousel-1.jpg);
+  background-image: url(../images/carousel-1.webp);
 }
 .carousel-item-2 {
-  background-image: url(./images/carousel-2.webp);
+  background-image: url(../images/carousel-2.webp);
 }
 .carousel-item-3 {
-  background-image: url(./images/carousel-3.webp);
+  background-image: url(../images/carousel-3.webp);
 }
 
 .marketing .col-lg-4 {
@@ -215,16 +220,13 @@ body {
   background-repeat: no-repeat;
 }
 .featurette-image-1 {
-  background-image: url(./images/featurette-1.webp);
+  background-image: url(../images/featurette-1.webp);
 }
 .featurette-image-2 {
-  background-image: url(./images/featurette-2.webp);
-}
-.card-img-top-wrapper {
-  aspect-ratio: 597 / 400;
+  background-image: url(../images/featurette-2.webp);
 }
 .checkout-cupcake {
-  background-image: url(./images/checkout.png);
+  background-image: url(../images/checkout.png);
   height: 128px;
   width: 128px;
   filter: invert(79%) sepia(4%) saturate(1021%) hue-rotate(324deg)

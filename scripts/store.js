@@ -305,3 +305,371 @@ let storeItems = [
     ""
   ),
 ];
+
+let cart = JSON.parse(localStorage.getItem("cart-items")) || [];
+
+document.addEventListener("visibilitychange", function (ev) {
+  if (document.visibilityState === "visible" && document.body.id === "cart") {
+    generateCart();
+  }
+});
+
+if (document.readyState == "loading") {
+  document.addEventListener("DOMContentLoaded", ready);
+} else {
+  ready();
+}
+
+function ready() {
+  switch (document.body.id) {
+    case "store":
+      generateStore();
+      break;
+    case "cart":
+      generateCart();
+      break;
+    case "recipes":
+      initRecipes();
+      break;
+    default:
+  }
+  updateTotalCartItems();
+}
+
+function generateStore() {
+  let storeContainer = document.querySelector(".store-container");
+  let modals = document.querySelector(".modals-container");
+
+  const storeCategoryTemplate = document.querySelector(
+    "template#store-category-template"
+  );
+  const storeItemTemplate = document.querySelector(
+    "template#store-item-template"
+  );
+  const modalTemplate = document.querySelector(
+    "template#store-item-modal-template"
+  );
+
+  let generatedModals = "";
+
+  for (let i = 0; i < storeItems.length; i++) {
+    const category = storeItems[i];
+    let categoryContainer = storeCategoryTemplate.content.cloneNode(true);
+    categoryContainer.querySelector(".category-title").textContent =
+      category.name;
+
+    if (category.background !== "") {
+      categoryContainer
+        .querySelector(".category-container")
+        .classList.add(category.background);
+    }
+
+    for (const item of category.items) {
+      const storeItem = storeItemTemplate.content.cloneNode(true);
+      const storeItemModal = modalTemplate.content.cloneNode(true);
+      //Store
+      storeItem
+        .querySelector(".store-item")
+        .classList.add(`store-item-${item.id}`);
+      storeItem.querySelector(".store-item-title").innerText = item.name;
+      storeItem.querySelector(".store-item-desc").innerText = item.desc;
+      storeItem.querySelector(".store-item-image").src = item.thumbnail;
+
+      categoryContainer.querySelector(".store-items").append(storeItem);
+
+      //Modal
+      storeItemModal.querySelector(".store-item-modal").id = `modal-${item.id}`;
+      storeItemModal
+        .querySelector(".store-item-modal")
+        .setAttribute("aria-labelledby", `modal-${item.id}-label`);
+      storeItemModal.querySelector(
+        ".store-item-title"
+      ).id = `modal-${item.id}-label`;
+
+      storeItemModal.querySelector(".store-item-title").innerText = item.name;
+      storeItemModal.querySelector(".store-item-desc").innerText = item.desc;
+      storeItemModal.querySelector(
+        ".store-item-price"
+      ).textContent = `${item.price.toFixed(2)} kr`;
+      storeItemModal.querySelector(".store-item-ingredients").innerText =
+        item.ingredients;
+
+      storeItemModal
+        .querySelector(".store-item-quantity-input")
+        .classList.add(`quantity-input-${item.id}`);
+      storeItemModal
+        .querySelector(".store-item-quantity-input")
+        .addEventListener("change", quantityChanged);
+
+      storeItemModal.querySelector(".shop-item-add-to-cart").onclick = () => {
+        addItemToCart(item.id);
+      };
+
+      storeItemModal.querySelector(".shop-item-close").onclick = () => {
+        document.querySelector(`.quantity-input-${item.id}`).value = 1;
+      };
+
+      const imageCarousel = storeItemModal.querySelector(".carousel");
+      imageCarousel.id = `item-${item.id}-carousel`;
+      imageCarousel
+        .querySelector(".carousel-control-prev")
+        .setAttribute("data-bs-target", `#item-${item.id}-carousel`);
+
+      imageCarousel
+        .querySelector(".carousel-control-next")
+        .setAttribute("data-bs-target", `#item-${item.id}-carousel`);
+
+      for (let i = 0; i < item.images.length; i++) {
+        const carouselIndicator = document.createElement("button");
+        carouselIndicator.setAttribute("type", "button");
+        carouselIndicator.setAttribute(
+          "data-bs-target",
+          `#item-${item.id}-carouselIndicators`
+        );
+        carouselIndicator.setAttribute("data-bs-slide-to", `${i}`);
+        carouselIndicator.setAttribute("aria-label", `Slide ${i + 1}`);
+
+        const carouselImageDiv = document.createElement("div");
+        carouselImageDiv.classList.add("carousel-item");
+        const carouselImageImg = document.createElement("img");
+        carouselImageDiv.append(carouselImageImg);
+
+        carouselImageImg.setAttribute("src", item.images[i]);
+        carouselImageImg.classList.add("d-block", "w-100");
+
+        if (i == 0) {
+          carouselIndicator.setAttribute("class", "active");
+          carouselIndicator.setAttribute("aria-current", "true");
+
+          carouselImageDiv.classList.add("active");
+        }
+
+        imageCarousel
+          .querySelector(".carousel-indicators")
+          .append(carouselIndicator);
+
+        imageCarousel.querySelector(".carousel-inner").append(carouselImageDiv);
+      }
+      modals.append(storeItemModal);
+      categoryContainer.querySelector(`.store-item-${item.id}`).onclick =
+        () => {
+          const itemModal = new bootstrap.Modal(
+            document.getElementById(`modal-${item.id}`)
+          );
+          itemModal.show();
+          console.log("HEJ");
+        };
+    }
+    storeContainer.append(categoryContainer);
+  }
+  document.querySelector(".footer-container").classList.remove("d-none");
+}
+function generateCart() {
+  loadCart();
+
+  const cartElement = document.querySelector(".shopping-cart-items");
+  removeAllChildNodes(cartElement);
+
+  const template = document.querySelector("template#cart-item-template");
+  let total = 0;
+
+  if (cart.length !== 0) {
+    for (const cartItem of cart) {
+      const itemElement = template.content.cloneNode(true);
+      let itemInfo = getStoreItem(cartItem.id);
+
+      itemElement.querySelector("tr").id = `cart-item-${cartItem.id}`;
+      itemElement
+        .querySelector("tr")
+        .setAttribute("store-item-id", cartItem.id);
+      itemElement.querySelector(".cart-item-image").src = itemInfo.thumbnail;
+      itemElement.querySelector(".cart-item-title").innerText = itemInfo.name;
+      itemElement.querySelector(
+        ".cart-item-price"
+      ).innerText = `${itemInfo.price.toFixed(2)} kr`;
+      itemElement.querySelector(".cart-item-quantity-input").value =
+        cartItem.amount;
+      itemElement
+        .querySelector(".cart-item-quantity-input")
+        .addEventListener("change", quantityChanged);
+      itemElement.querySelector(".delete-cart-item").onclick = () => {
+        removeCartItem(cartItem.id);
+      };
+
+      cartElement.append(itemElement);
+
+      total += cartItem.amount * itemInfo.price;
+    }
+  } else {
+    cartElement.innerHTML = "<tr><td>Din kundvagn är tom<td></tr>"; //TODO
+  }
+
+  if (total === 0) {
+    document.querySelector(".checkout-button").setAttribute("disabled", "");
+  }
+
+  document.querySelector(".checkout-button").onclick = checkout;
+  document.querySelector(".cart-total-price").innerText =
+    total.toFixed(2) + " kr";
+
+  //updateCartTotal();
+}
+function initRecipes() {
+  document.querySelector(".search-button").onclick = searchRecipes;
+}
+async function searchRecipes() {
+  const searchBox = document.querySelector(".search-box");
+  const searchString = searchBox.value;
+
+  if (searchString.length > 3) {
+    const apiKey = "a4dd2ff7b76f417da04827b30d8f360e";
+    const url = new URL("https://api.spoonacular.com/recipes/complexSearch");
+    let recipes = [];
+    url.searchParams.append("apiKey", apiKey);
+    url.searchParams.append("type", "dessert, bread");
+    url.searchParams.append("query", searchString);
+
+    const response = await fetch(url);
+
+    if (response.status === 200) {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      removeAllChildNodes(document.querySelector(".recipes"));
+      for (const result of jsonResponse.results) {
+        addRecipe(result.id, result.title, result.image);
+      }
+    }
+  } else {
+    console.log("För kort sökord");
+  }
+}
+function addRecipe(id, title, image) {
+  const template = document
+    .querySelector("template#recipe-template")
+    .content.cloneNode(true);
+  const recipesDiv = document.querySelector(".recipes");
+
+  template.querySelector(".recipe-item").onclick = () => {
+    showRecipe(id);
+  };
+  template.querySelector(".recipe-item-image").src = image;
+  template.querySelector(".recipe-item-title").textContent = title;
+  recipesDiv.append(template);
+}
+async function showRecipe(id) {
+  const url = new URL(
+    `https://api.spoonacular.com/recipes/${id}/information?apiKey=a4dd2ff7b76f417da04827b30d8f360e&includeNutrition=false`
+  );
+
+  const response = await fetch(url);
+
+  if (response.status === 200) {
+    const jsonResponse = await response.json();
+    const modal = document.querySelector("#recipe-modal");
+    const ingredients = document.querySelector(".ingredient-list");
+    const instructions = document.querySelector(".instruction-list");
+    removeAllChildNodes(ingredients);
+    removeAllChildNodes(instructions);
+    modal.querySelector(".recipe-title").textContent = jsonResponse.title;
+    modal.querySelector(".recipe-image").src = jsonResponse.image;
+
+    for (const ingredient of jsonResponse.extendedIngredients) {
+      const listItem = document.createElement("li");
+      listItem.classList.add("list-group-item");
+      listItem.textContent = ingredient.original;
+      ingredients.append(listItem);
+    }
+    for (const step of jsonResponse.analyzedInstructions[0].steps) {
+      const listItem = document.createElement("li");
+      listItem.classList.add("list-group-item");
+      listItem.textContent = step.step;
+      instructions.append(listItem);
+    }
+  }
+  const modal = new bootstrap.Modal(document.getElementById("recipe-modal"));
+  modal.show();
+}
+
+function checkout() {
+  cart = [];
+
+  saveCart();
+  generateCart();
+  updateTotalCartItems();
+
+  document.querySelector(".cart-container").classList.add("d-none");
+  document.querySelector(".checkout-container").classList.remove("d-none");
+}
+
+function removeCartItem(id) {
+  const itemElement = document.querySelector(`tr#cart-item-${id}`);
+  itemElement.remove();
+
+  cart = cart.filter((item) => item.id !== id);
+
+  saveCart();
+  //updateCartTotal();
+  updateTotalCartItems();
+  generateCart();
+}
+
+function quantityChanged(event) {
+  let input = event.target;
+  if (isNaN(input.value) || input.value <= 0) {
+    input.value = 1;
+  }
+  if (document.body.id === "cart") {
+    const itemId = input.closest("tr").getAttribute("store-item-id");
+    let cartItem = cart.find((x) => x.id == itemId);
+    cartItem.amount = parseInt(input.value);
+    saveCart();
+    updateTotalCartItems();
+    generateCart();
+  }
+}
+
+function addItemToCart(id) {
+  loadCart();
+  let search = cart.find((x) => x.id === id);
+  let amount = parseInt(document.querySelector(`.quantity-input-${id}`).value);
+
+  if (search === undefined) {
+    cart.push(new CartItem(id, amount));
+  } else {
+    search.amount += amount;
+  }
+
+  document.querySelector(`.quantity-input-${id}`).value = 1;
+  saveCart();
+  updateTotalCartItems();
+}
+
+function updateTotalCartItems() {
+  let total = 0;
+  for (const cartItem of cart) {
+    total += cartItem.amount;
+  }
+  document.querySelector(".cart-amount").textContent = total;
+}
+function getStoreItem(id) {
+  return (
+    storeItems
+      .find((c) =>
+        c.items.some((i) => {
+          return i.id === id;
+        })
+      )
+      .items.find((i) => i.id === id) || []
+  );
+}
+function saveCart() {
+  localStorage.setItem("cart-items", JSON.stringify(cart));
+}
+function loadCart() {
+  cart = JSON.parse(localStorage.getItem("cart-items")) || [];
+}
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}

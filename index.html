@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>BagarBasses konditori & bageri</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="All about meta tags and how to add them to your website."
+    />
+    <meta
+      name="keywords"
+      content="meta tags, meta description, meta keywords, SEO, search engine optimization"
     />
 
     <!-- Bootstrap CSS v5.2.1 -->
@@ -20,9 +28,13 @@
     <link
       rel="stylesheet preload"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+      as="style"
     />
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="preload" href="./images/carousel-1.webp" as="image" />
+
+    <script src="./scripts/store.js" async></script>
   </head>
 
   <body>
@@ -126,7 +138,7 @@
             aria-label="Third slide"
           ></li>
         </ol>
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" role="listbox" aria-label="Image carousel">
           <div class="carousel-item carousel-item-1 active"></div>
           <div class="carousel-item carousel-item-2"></div>
           <div class="carousel-item carousel-item-3"></div>
