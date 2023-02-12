@@ -31,16 +31,16 @@ let storeItems = [
         1,
         "Red Velvet Cupcakes",
         24.9,
-        `One of BagarBasses’s oldest and best-selling desserts, our classic-style red velvet cupcake is a crimson-colored, chocolate-flavored cake topped with whipped vanilla icing.`,
+        `En av BagarBasses äldsta och mest sålda desserter, vår klassiska red velvet cupcake är en rödfärgad kaka med chokladsmak toppad med vispad vaniljglasyr.`,
         "Granulated Sugar, Cocoa Powder, Cake Flour, Baking Soda, Salt, Butter, Eggs, Milk, Sour Cream, Cider Vinegar, Vanilla Extract, Food Dye, AP Flour",
         ["images/1-1.webp", "images/1-2.webp"],
         "images/1-thumb.webp"
       ),
       new StoreItem(
         2,
-        "Classic Vanilla Mini Cupcakes",
+        "Klassiska Vanilj Mini Cupcakes",
         22,
-        "Our world-famous vanilla cupcakes, sized down to one (or two!) bites: light and butter vanilla cake topped with a signature swirl of vanilla buttercream.",
+        "Våra världsberömda vaniljcupcakes, förminskade ner till en (eller två!) tugga: lätt och smör vaniljkaka toppad med en signaturvirvel av vaniljsmörkräm.",
 
         "Granulated Sugar, Cocoa Powder, Cake Flour, Baking Soda, Salt, Butter, Eggs, Milk, Sour Cream, Vanilla Extract, Food Dye, AP Flour, Canola Oil, Cocoa Powder, Baking Powder, Confectionary Sugar, Sprinkles, Egg Whites",
         ["images/2-1.webp"],
@@ -48,9 +48,9 @@ let storeItems = [
       ),
       new StoreItem(
         3,
-        "Classic Chocolate Mini Cupcakes",
+        "Klassiska Choklad Mini Cupcakes",
         22.0,
-        "Small in size, huge in flavor: Our mini chocolate cupcakes are made with our light and moist cake batter and topped with vanilla or chocolate buttercream.",
+        "Liten i storleken, enorm i smaken: Våra minichokladcupcakes är gjorda med vår lätta och fuktiga kaksmet och toppade med vanilj eller chokladsmörkräm.",
 
         "AP Flour, Granulated Sugar, Canola oil, Cocoa Powder, Baking Powder, Baking Soda, Salt, Milk, Eggs, Vanilla Extract, Chocolate Callets 65%, Confectionary Sugar, Sprinkles",
         ["images/3-1.webp"],
@@ -58,9 +58,9 @@ let storeItems = [
       ),
       new StoreItem(
         4,
-        "The Carrie Cupcakes",
+        "Carrie Cupcakes",
         24.9,
-        "Reenact our favorite SATC scene with a crush-worthy vanilla cupcake topped with pink vanilla buttercream and a daisy",
+        "Återskapa vår favorit-SATC-scen med en krossvärd vaniljcupcake toppad med rosa vaniljsmörkräm och en tusensköna",
 
         "Cake Flour, Granulated Sugar, Butter, Baking Powder, Baking Soda, Salt, Milk, Sour Cream, Egg Whites, Vanilla Extract, Confectionary Sugar, Food Dye, Sprinkles",
         ["images/4-1.webp", "images/4-2.webp"],
@@ -68,9 +68,9 @@ let storeItems = [
       ),
       new StoreItem(
         5,
-        "Confetti Cupcake Assortment",
+        "Konfetti Cupcake Blandning",
         24.9,
-        "Nothing says celebration like confetti, inside and out. Our classic vanilla cupcakes are loaded with confetti, topped with vanilla buttercream and showered with more confetti!",
+        "Ingenting säger firande som konfetti, inifrån och ut. Våra klassiska vaniljcupcakes är laddade med konfetti, toppade med vaniljsmörkräm och duschade med mer konfetti!",
 
         "Granulated Sugar, Cocoa Powder, Cake Flour, Baking Soda, Salt, Butter, Eggs, Milk, Sour Cream, Vanilla Extract, Food Dye, AP Flour, Canola Oil, Cocoa Powder, Baking Powder, Chocolate Callets 65%, Confectionary Sugar, Sprinkles, Egg Whites, Food Dye",
         ["images/5-1.webp"],
@@ -78,9 +78,9 @@ let storeItems = [
       ),
       new StoreItem(
         6,
-        "Classic Chocolate Cupcakes",
+        "Klassiska Choklad Cupcakes",
         24.9,
-        "An assortment of BagarBasses’s celebrated chocolate cupcakes: light-as-a-feather chocolate cake topped with vanilla or chocolate buttercream and assorted sprinkles.",
+        "Ett sortiment av BagarBasses berömda chokladcupcakes: lätt som en fjäder chokladkaka toppad med vanilj eller chokladsmörkräm och diverse strössel.",
 
         "Granulated Sugar, AP Flour, Cocoa Powder, Baking Powder, Baking Soda, Salt, Eggs, Milk, Vanilla Extract, Canola Oil, Water, Confectionary Sugar, Milk, Sprinkles, Food Dye",
         ["images/6-1.webp"],
@@ -88,9 +88,9 @@ let storeItems = [
       ),
       new StoreItem(
         7,
-        "Chocolate Lovers' Cupcake Assortment",
+        "Chokladälskarens Cupcake Blandning",
         58.0,
-        "Love chocolate? We made a cupcake assortment just for you. Enjoy four Devil’s Food cupcakes with chocolate mocha buttercream, four Chocolate Truffle cupcakes filled with white chocolate ganache and dipped in chocolate ganache, and four Chocolate cupcakes with a creamy peanut butter buttercream and topped with chopped peanuts.",
+        "Älskar du choklad? Vi har gjort ett cupcake-sortiment just för dig. Njut av fyra Devil's Food-cupcakes med chokladmockasmörkräm, fyra Chokladtryffelcupcakes fyllda med vit chokladganache och doppad i chokladganache, och fyra Chokladcupcakes med en krämig jordnötssmörkräm och toppad med hackade jordnötter.",
 
         "Butter, All Purpose Flour, Egg, Salt, Sugar, Vanilla, Canola Oil, Milk, Coca Powder, Baking Powder, Confectioner’S Sugar, Peanut Butter, Peanuts, Heavy Cream",
         [
@@ -104,9 +104,9 @@ let storeItems = [
       ),
       new StoreItem(
         8,
-        "Classic Vanilla Cupcakes",
+        "Klassiska Vanilj Cupcakes",
         24.9,
-        "What makes our vanilla cupcake a best-seller? An irresistibly light and buttery crumb topped with vanilla or chocolate buttercream, always in our signature swirl.",
+        "Vad gör vår vaniljcupcake till en bästsäljare? En oemotståndligt lätt och smörig smula toppad med vanilj eller chokladsmörkräm, alltid i vår signaturvirvel.",
 
         "Granulated Sugar, Cocoa Powder, Cake Flour, Baking Soda, Salt, Butter, Eggs, Milk, Sour Cream, Vanilla Extract, Food Dye, AP Flour, Canola Oil, Cocoa Powder, Baking Powder, Chocolate Callets 65%, Confectionary Sugar, Sprinkles, Egg Whites, Food Dye",
         ["images/8-1.webp", "images/8-2.webp", "images/8-3.webp"],
@@ -116,13 +116,13 @@ let storeItems = [
     ""
   ),
   new StoreCategory(
-    "♥ Alla hjärtans dag ♥",
+    "♥ Alla Hjärtans Dag ♥",
     [
       new StoreItem(
         10,
-        "Heart Sugar Cookies",
+        "Hjärtformade Kakor",
         8.0,
-        "Share your feelings with three heart-shaped cut-out cookies, covered in red, white, and pink sugar.",
+        "Dela dina känslor med tre hjärtformade utskurna kakor, täckta med rött, vitt och rosa socker.",
 
         "Flour, Salt, Baking Soda, Butter, Sugar, Eggs, Vanilla Extract, Sanding Sugar, Food Dye",
         ["images/10-1.webp"],
@@ -130,9 +130,9 @@ let storeItems = [
       ),
       new StoreItem(
         14,
-        "Little Bits of Love Mini Cupcake Assortment",
+        "Små Bitar Av Kärlek - Blandade Cupcakes",
         100,
-        "Share the love with our world-famous mini chocolate and vanilla cupcakes all topped with an assortment of our vanilla and chocolate buttercream and Valentine's Day decorations.",
+        "Dela kärleken med våra världsberömda minichoklad- och vaniljcupcakes, alla toppade med ett sortiment av vår vanilj- och chokladsmörkräm och alla hjärtans dag-dekorationer.",
 
         "Granulated Sugar, Cocoa Powder, Cake Flour, Baking Soda, Salt, Butter, Eggs, Milk, Sour Cream, Vanilla Extract, Food Dye, AP Flour, Canola Oil, Cocoa Powder, Baking Powder, Confectionary Sugar, Sprinkles, Egg Whites",
         ["images/14-1.webp", "images/14-2.webp", "images/14-3.webp"],
@@ -140,9 +140,9 @@ let storeItems = [
       ),
       new StoreItem(
         15,
-        "Valentine's Day Cake",
+        "Alla Hjärtans Dags Tårta",
         55.0,
-        'Our classic confetti cake turns pink for Valentine\'s Day, decorated with heart quins and inscribed with "Be Mine" on top.',
+        'Vår klassiska konfetti-tårta blir rosa till Alla hjärtans dag, dekorerad med hjärtkinnar och inskriven med "Be Mine" på toppen.',
 
         "Sugar, Butter, Vanilla, Cake Flour, Baking Powder, Baking Soda, Salt, Milk, Sour Cream, Egg Whites, Confetti, Food Dye, Confectioner's Sugar",
         ["images/15-1.webp", "images/15-2.webp"],
@@ -150,9 +150,9 @@ let storeItems = [
       ),
       new StoreItem(
         16,
-        "Rose Cupcakes",
+        "Rosencupcakes",
         35.7,
-        "Our classic vanilla, chocolate, and red velvet cupcakes topped with beautiful floral designs made with red, white or pink vanilla buttercream – the perfect Valentine's Day gift!",
+        "Våra klassiska vanilj-, choklad- och röd sammetscupcakes toppade med vackra blommönster gjorda med röd, vit eller rosa vaniljsmörkräm – den perfekta Alla hjärtans dag-presenten!",
 
         "Granulated Sugar, Cocoa Powder, Cake Flour, Baking Soda, Salt, Butter, Eggs, Milk, Sour Cream, Vanilla Extract, Food Dye, AP Flour, Canola Oil, Cocoa Powder, Baking Powder, Confectionary Sugar, Sprinkles, Egg Whites",
         ["images/16-1.webp"],
@@ -166,9 +166,9 @@ let storeItems = [
     [
       new StoreItem(
         9,
-        "Banana Pudding Cookies",
+        "Banan Pudding Kakor",
         25.0,
-        `That's right – we turned our famous Banana Pudding into a soon-to-be-famous cookie. Our Banana Pudding Cookie is a soft and sweet treat packed with white chocolate chips, vanilla wafers and our world-famous Banana Pudding mix. Enjoy 6 cookies in every pack - enough to share!`,
+        `Det stämmer – vi förvandlade vår berömda bananpudding till en snart känd kaka. Vår Banana Pudding Cookie är en mjuk och söt godbit fylld med vita chokladchips, vaniljrån och vår världsberömda bananpuddingmix. Njut av 6 kakor i varje förpackning - tillräckligt att dela!`,
 
         "Vanilla wafers, bananas, butter, all purpose flour, egg, salt, sugar, vanilla, milk powder, baking soda, brown sugar, white chocolate chips",
         ["images/9-1.webp", "images/9-2.webp"],
@@ -176,9 +176,9 @@ let storeItems = [
       ),
       new StoreItem(
         11,
-        "Red Velvet Banana Pudding Cookies",
+        "Red Velvet Banan Pudding Kakor",
         25.0,
-        "This cookie features our soft-baked, Banana Pudding-packed cookies with a delicious twist - our famous Red Velvet cake!",
+        "Denna kaka innehåller våra mjukgräddade, bananpudding-packade kakor med en läcker twist - vår berömda Red Velvet-kaka!",
 
         "Granulated Sugar, Cocoa Powder, Cake Flour, Baking Soda, Salt, Butter, Eggs, Milk, Sour Cream, Vanilla Extract, Food Dye, AP Flour, Canola Oil, Cocoa Powder, Baking Powder, Confectionary Sugar, Sprinkles, Egg Whites",
         ["images/11-1.webp", "images/11-2.webp"],
@@ -188,7 +188,7 @@ let storeItems = [
         12,
         "Chocolate Chunk Cookies",
         18.0,
-        "Our soft and chewy take on the classic chocolate chip cookie—but make it chunky!",
+        "Vår mjuka och sega version av den klassiska chokladkakan – men gör den chunky!",
 
         "AP Flour, Baking Soda, Salt, Butter, Granulated Sugar, Brown Sugar, Vanilla Extract, Eggs, Chocolate Callets 65%",
         ["images/12-1.webp", "images/12-2.webp", "images/12-3.webp"],
@@ -196,9 +196,9 @@ let storeItems = [
       ),
       new StoreItem(
         13,
-        "Cookie Assortment",
+        "Blandade Kakor",
         45.0,
-        "Fill up your cookie jar with two of our favorite classics: one dozen each of our chocolate chunk and oatmeal raisin cookies.",
+        "Fyll din kakburk med två av våra favoritklassiker: ett dussin vardera av våra chokladbitar och havregrynsrussinkakor.",
 
         "AP Flour, Baking Soda, Salt, Butter, Granulated Sugar, Brown Sugar, Vanilla Extract, Eggs, Chocolate Callets 65%, Cinnamon, Oats, Raisins",
         ["images/13-1.webp"],
@@ -212,9 +212,9 @@ let storeItems = [
     [
       new StoreItem(
         17,
-        "Confetti Cake",
+        "Konfettitårta",
         58.0,
-        `We make our buttery, beloved vanilla cake extra festive with confetti folded into each layer, then cover the cake with buttercream and adorn it with more confetti outside.`,
+        `Vi gör vår smöriga, älskade vaniljkaka extra festlig med konfetti hopvikt i varje lager, täcker sedan tårtan med smörkräm och pryder den med mer konfetti utanför.`,
 
         "Cake Flour, Granulated Sugar, Butter, Baking Powder, Baking Soda, Salt, Milk, Sour Cream, Egg Whites, Vanilla Extract, Confectionary Sugar, Chocolate Callets 65%, Sprinkles",
         [
@@ -227,9 +227,9 @@ let storeItems = [
       ),
       new StoreItem(
         18,
-        "Hummingbird Cake",
+        "Kolibritårta",
         55.0,
-        "The unique combination of banana, pineapple, and pecans flavor this classic Southern layer cake, which has a texture similar to our extra-moist carrot cake. We finish this bestseller with cream cheese icing and a sprinkling of pecans.",
+        "Den unika kombinationen av banan, ananas och pekannötter smaksätter denna klassiska södra lagerkaka, som har en konsistens som liknar vår extra fuktiga morotskaka. Vi avslutar denna storsäljare med färskostglasyr och ett stänk pekannötter.",
 
         "AP Flour, Baking Soda, Salt, Cinnamon, Bananas, Eggs, Granulated Sugar, Canola Oil, Pineapple, Vanilla Extract, Pecans, Cream Cheese, Confectionary Sugar",
         ["images/18-1.webp", "images/18-2.webp"],
@@ -237,9 +237,9 @@ let storeItems = [
       ),
       new StoreItem(
         19,
-        "Chocolate Cake",
+        "Chokladtårta",
         53.0,
-        "Three layers of super-rich chocolate cake and silky chocolate buttercream means pure, indulgent bliss.",
+        "Tre lager superrik chokladkaka och silkeslen chokladsmörkräm betyder ren, överseende lycka.",
 
         "AP Flour, Granulated Sugar, Canola oil, Cocoa Powder, Baking Powder, Baking Soda, Salt, Milk, Eggs, Vanilla Extract, Confectionary Sugar, Food Dye, Sprinkles",
         ["images/19-1.webp", "images/19-2.webp", "images/19-3.webp"],
@@ -247,9 +247,9 @@ let storeItems = [
       ),
       new StoreItem(
         20,
-        "Carrot Cake",
+        "Morotstårta",
         45.0,
-        "We load our super-moist carrot cake with freshly grated carrots, juicy pineapple, shredded coconut, raisins, and walnuts, then top it with tangy cream cheese frosting and more chopped nuts.",
+        "Vi laddar vår superfuktiga morotskaka med nyrivna morötter, saftig ananas, riven kokos, russin och valnötter och toppar den sedan med syrlig färskostfrosting och mer hackade nötter.",
 
         "AP Flour, Cinnamon, Baking Powder, Baking Soda, Salt, Eggs, Granulated Sugar, Canola Oil, Carrots, Pineapple, Raisins, Coconut Sweetened, Walnuts, Cream Cheese",
         ["images/20-1.webp", "images/20-2.webp", "images/20-3.webp"],
@@ -263,9 +263,9 @@ let storeItems = [
     [
       new StoreItem(
         21,
-        "Caramel Pecan Cheesecake",
+        "Karamel Pecan Cheesecake",
         8.25,
-        `How do you improve upon our classic vanilla bean cheesecake? Top it with buttery caramel and toasted pecans!`,
+        `Hur förbättrar du vår klassiska cheesecake med vaniljstång? Toppa den med smörig kola och rostade pekannötter!`,
 
         "Cream Cheese, Granulated Sugar, Vanilla Extract, Eggs, Lemon Juice, Heavy Cream, Milk, Graham Cracker, Butter, Caramel, Pecans",
         ["images/21-1.webp"],
@@ -273,9 +273,9 @@ let storeItems = [
       ),
       new StoreItem(
         22,
-        "Vanilla Bean Cheesecake",
+        "Vanilj Cheesecake",
         8.25,
-        "Flavored with top-shelf vanilla beans atop a graham cracker crust, this rich cheesecake is a classic for a deliciously good reason.",
+        "Smaksatt med vaniljbönor från översta hyllan ovanpå en graham cracker skorpa, är denna rika cheesecake en klassiker av en utsökt god anledning.",
 
         "Cream Cheese, Granulated Sugar, Vanilla Extract, Eggs, Lemon Juice, Heavy Cream, Milk, Graham Cracker, Butter",
         ["images/22-1.webp"],
@@ -285,7 +285,7 @@ let storeItems = [
         23,
         "Key Lime Cheesecake",
         8.25,
-        "Taste the sweetness of summer all year long with our key lime cheesecake, flavored with fresh key lime juice and finished with a graham cracker crust and a dollop of whipped cream.",
+        "Smaka på sommarens sötma året runt med vår key lime cheesecake, smaksatt med färsk key lime juice och avslutad med en graham cracker crust och en klick vispgrädde.",
 
         "Cream Cheese, Granulated Sugar, Vanilla Extract, Eggs, Lemon Juice, Heavy Cream, Graham Cracker, Butter, Salt, Key Lime Juice",
         ["images/23-1.webp"],
@@ -293,9 +293,9 @@ let storeItems = [
       ),
       new StoreItem(
         24,
-        "Blueberry Cheesecake",
+        "Blåbärs Cheesecake",
         8.25,
-        "Juicy blueberries top our timeless vanilla bean-infused cheesecake, finished with a graham cracker crust.",
+        "Juicy blåbär toppar vår tidlösa cheesecake med vaniljstång, avslutad med en graham cracker crust.",
 
         "Cream Cheese, Granulated Sugar, Vanilla Extract, Eggs, Lemon Juice, Heavy Cream, Milk, Graham Cracker, Butter, Blueberries, Lemon Zest, Cornstarch, Water, Brown Sugar",
         ["images/24-1.webp"],

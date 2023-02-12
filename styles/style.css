@@ -121,6 +121,7 @@ body {
   padding-bottom: 40%;
   position: relative;
   height: 0;
+  min-height: 400px;
 }
 .map-container iframe {
   left: 0;
